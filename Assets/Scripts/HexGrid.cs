@@ -14,6 +14,8 @@ public class HexGrid : MonoBehaviour
 
     private HexMesh hexMesh;
     
+    public Color defaultColor = Color.white;
+    public Color touchedColor = Color.magenta;
     private void Awake()
     {
         hexMesh = GetComponentInChildren<HexMesh>();

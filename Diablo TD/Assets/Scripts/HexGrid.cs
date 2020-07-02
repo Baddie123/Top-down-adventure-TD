@@ -17,8 +17,6 @@ public class HexGrid : MonoBehaviour
     private void Awake()
     {
         hexMesh = GetComponentInChildren<HexMesh>();
-        
-        
         cells = new HexCell[width * height];
 
         for (int z = 0; z < height; z++)
@@ -34,8 +32,15 @@ public class HexGrid : MonoBehaviour
     void Start () {
         hexMesh.Triangulate(cells);
     }
-    
-    
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            HandleInput();
+        }
+    }
+
     void CreateCell(int x, int z)
     {
         Vector3 position;
@@ -47,5 +52,23 @@ public class HexGrid : MonoBehaviour
         HexCell cell = cells[x + z * width] = Instantiate<HexCell>(cellPrefab);
         cell.transform.SetParent(transform, false);
         cell.transform.localPosition = position;
+        cell.coordinates = HexCoordinates.FromOffsetCoordinates(x,z);
+    }
+
+    void HandleInput()
+    {
+        
+        Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(inputRay, out hit)) {
+            TouchCell(hit.point);
+        }
+   
+    }
+    
+    void TouchCell (Vector3 position) {
+        position = transform.InverseTransformPoint(position);
+        HexCoordinates coordinates = HexCoordinates.FromPosition(position);
+        Debug.Log("touched at " + coordinates.ToString());
     }
 }

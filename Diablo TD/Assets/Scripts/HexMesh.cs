@@ -9,13 +9,15 @@ public class HexMesh : MonoBehaviour
     Mesh hexMesh;
     List<Vector3> vertices;
     List<int> triangles;
+    MeshCollider meshCollider;
 
     void Awake () {
         GetComponent<MeshFilter>().mesh = hexMesh = new Mesh();
         hexMesh.name = "Hex Mesh";
-        
         vertices = new List<Vector3>();
         triangles = new List<int>();
+        meshCollider = gameObject.AddComponent<MeshCollider>();
+
     }
 
     public void Triangulate(HexCell[] cells)
@@ -28,10 +30,11 @@ public class HexMesh : MonoBehaviour
         {
             Triangulate(cells[i]);
         }
-        
         hexMesh.vertices = vertices.ToArray();
         hexMesh.triangles = triangles.ToArray();
         hexMesh.RecalculateNormals();
+        meshCollider.sharedMesh = hexMesh;
+
     }
     
     

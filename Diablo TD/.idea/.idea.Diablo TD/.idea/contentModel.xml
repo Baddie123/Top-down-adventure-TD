@@ -4,10 +4,15 @@
     <e p="C:\Users\OmarH\.Rider2018.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\OmarH\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_Diablo TD.1695576071.00" t="ExcludeRecursive" />
     <e p="D:\_Projects\Top-down-adventure-TD\Diablo TD" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="HexCoordinatesDrawer.cs" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="HexCell.cs" t="Include" />
+          <e p="HexCoordinates.cs" t="Include" />
           <e p="HexGrid.cs" t="Include" />
           <e p="HexMesh.cs" t="Include" />
           <e p="HexMetrics.cs" t="Include" />

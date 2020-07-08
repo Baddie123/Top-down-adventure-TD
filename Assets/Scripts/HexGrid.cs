@@ -36,16 +36,23 @@ public class HexGrid : MonoBehaviour
         hexMesh.Triangulate(cells);
     }
 
-    private void Update()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            HandleInput();
-        }
+
+
+
+    // Public Functions //
+    public void TouchCell (Vector3 position, Color color) {
+        position = transform.InverseTransformPoint(position);
+        HexCoordinates coordinates = HexCoordinates.FromPosition(position);
+        Debug.Log("touched at " + coordinates.ToString());
+        
+        //Find index of the cell in the array, change its color, and re-triangulate it
+        int index = coordinates.X + coordinates.Z * width + coordinates.Z / 2;
+		HexCell cell = cells[index];
+		cell.color = color;
+		hexMesh.Triangulate(cells);
     }
 
-
-    // Functions //
+    // Private Functions //
     void CreateCell(int x, int z)
     {
         Vector3 position;
@@ -58,26 +65,5 @@ public class HexGrid : MonoBehaviour
         cell.transform.localPosition = position;
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x,z);
         cell.color = defaultColor;
-    }
-
-    void HandleInput()
-    {
-        Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(inputRay, out hit)) {
-            TouchCell(hit.point);
-        }
-    }
-    
-    void TouchCell (Vector3 position) {
-        position = transform.InverseTransformPoint(position);
-        HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-        Debug.Log("touched at " + coordinates.ToString());
-        
-        //Find index of the cell in the array, change its color, and re-triangulate it
-        int index = coordinates.X + coordinates.Z * width + coordinates.Z / 2;
-		HexCell cell = cells[index];
-		cell.color = touchedColor;
-		hexMesh.Triangulate(cells);
     }
 }

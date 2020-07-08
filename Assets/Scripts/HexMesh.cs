@@ -56,7 +56,6 @@ public class HexMesh : MonoBehaviour
             );
             AddTriangleColor(cell.color);
         }
-        cell.gameObject.AddComponent<MeshFilter>();
     }
     
     void AddTriangle (Vector3 v1, Vector3 v2, Vector3 v3) {

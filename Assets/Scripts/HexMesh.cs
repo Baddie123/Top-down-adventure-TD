@@ -20,7 +20,9 @@ public class HexMesh : MonoBehaviour
         vertices = new List<Vector3>();
         triangles = new List<int>();
         colors = new List<Color>();
-        meshCollider = gameObject.AddComponent<MeshCollider>();
+        
+        if (GetComponent<MeshCollider>() == null)
+            meshCollider = gameObject.AddComponent<MeshCollider>();
     }
 
 
@@ -56,7 +58,6 @@ public class HexMesh : MonoBehaviour
             );
             AddTriangleColor(cell.color);
         }
-        cell.gameObject.AddComponent<MeshFilter>();
     }
     
     void AddTriangle (Vector3 v1, Vector3 v2, Vector3 v3) {

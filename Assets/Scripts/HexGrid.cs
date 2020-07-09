@@ -55,6 +55,7 @@ public class HexGrid : MonoBehaviour
         cell.transform.SetParent(transform, false);
         cell.transform.localPosition = position;
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x,z);
+        cell.color = defaultColor;
     }
 
     void HandleInput()
@@ -69,8 +70,10 @@ public class HexGrid : MonoBehaviour
     }
     
     void TouchCell (Vector3 position) {
-        position = transform.InverseTransformPoint(position);
         HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-        Debug.Log("touched at " + coordinates.ToString());
+        int index = coordinates.X + coordinates.Z * width + coordinates.Z / 2;
+        HexCell cell = cells[index];
+        cell.color = touchedColor;
+        hexMesh.Triangulate(cells);
     }
 }

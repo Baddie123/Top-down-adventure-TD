@@ -23,36 +23,10 @@ public class HexCell : MonoBehaviour
         triangles = new List<int>();
         colors = new List<Color>();
         meshCollider = gameObject.AddComponent<MeshCollider>();
-
-        Triangulate(this);
     }
 
 
     // Public Functions //
-    void Triangulate (HexCell cell) {
-        hexCell.Clear();
-        vertices.Clear();
-        triangles.Clear();
-        colors.Clear();
-
-        Vector3 center = cell.transform.localPosition;
-        for (int i = 0; i < 6; i++)
-        {
-            AddTriangle(
-                center,
-                center + HexMetrics.corners[i],
-                center + HexMetrics.corners[i+1]
-            );
-            AddTriangleColor(cell.color);
-        }
-        
-        hexCell.vertices = vertices.ToArray();
-        hexCell.triangles = triangles.ToArray();
-        hexCell.colors = colors.ToArray();
-        hexCell.RecalculateNormals();
-        meshCollider.sharedMesh = hexCell;
-    }
-
     public HexCell GetNeighbor (HexDirection direction) {
 		return neighbors[(int)direction];
 	}

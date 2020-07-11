@@ -12,8 +12,10 @@ public class HexCell : MonoBehaviour
     List<int> triangles;
     List<Color> colors;
     MeshCollider meshCollider;
+    [SerializeField] HexCell[] neighbors;
 
     
+    // Unity Functions //
     void Awake () {
         GetComponent<MeshFilter>().mesh = hexCell = new Mesh();
         hexCell.name = "Hex Cell Mesh";
@@ -25,6 +27,8 @@ public class HexCell : MonoBehaviour
         Triangulate(this);
     }
 
+
+    // Public Functions //
     void Triangulate (HexCell cell) {
         hexCell.Clear();
         vertices.Clear();
@@ -48,6 +52,15 @@ public class HexCell : MonoBehaviour
         hexCell.RecalculateNormals();
         meshCollider.sharedMesh = hexCell;
     }
+
+    public HexCell GetNeighbor (HexDirection direction) {
+		return neighbors[(int)direction];
+	}
+
+    public void SetNeighbor (HexDirection direction, HexCell cell) {
+		neighbors[(int)direction] = cell;
+        cell.neighbors[(int)direction.Opposite()] = this;
+	}
 
 
     // Private/Helper Functions //

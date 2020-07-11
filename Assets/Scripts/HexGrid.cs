@@ -37,8 +37,6 @@ public class HexGrid : MonoBehaviour
     }
 
 
-
-
     // Public Functions //
     public void TouchCell (Vector3 position, Color color) {
         position = transform.InverseTransformPoint(position);
@@ -65,5 +63,25 @@ public class HexGrid : MonoBehaviour
         cell.transform.localPosition = position;
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x,z);
         cell.color = defaultColor;
+
+        //Connect cells to their Left/Right neighbors
+        if (x > 0) {
+			cell.SetNeighbor(HexDirection.W, cells[(x + z * width) - 1]);
+		}
+        //Connect cells to their lower right/left neighbors
+		if (z > 0) {
+			if ((z & 1) == 0) {
+				cell.SetNeighbor(HexDirection.SE, cells[(x + z * width) - width]);
+				if (x > 0) {
+					cell.SetNeighbor(HexDirection.SW, cells[(x + z * width) - width - 1]);
+				}
+			}
+			else {
+				cell.SetNeighbor(HexDirection.SW, cells[(x + z * width) - width]);
+				if (x < width - 1) {
+					cell.SetNeighbor(HexDirection.SE, cells[(x + z * width) - width + 1]);
+				}
+			}
+		}
     }
 }

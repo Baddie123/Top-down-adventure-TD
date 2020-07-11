@@ -31,14 +31,5 @@ public class GridManager : MonoBehaviour
    
     }
     
-        
-    void TouchCell (Vector3 position) {
-        //position = transform.InverseTransformPoint(position);
-        HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-        Debug.Log("touched at " + coordinates.ToString());
 
-        hexGrid.cells[coordinates.X + coordinates.Z / 2 + coordinates.Z * hexGrid.width ].meshRenderer.materials[0].color = Color.black;
-        
-        player.transform.position = new Vector3();
-    }
 }

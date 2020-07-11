@@ -27,7 +27,7 @@ public class HexMesh : MonoBehaviour
 
 
     // Public Functions //
-    public void Triangulate(HexCell[] cells)
+    public void Triangulate (HexCell[] cells)
     {
         hexMesh.Clear();
         vertices.Clear();
@@ -36,7 +36,7 @@ public class HexMesh : MonoBehaviour
 
         for (int i = 0; i < cells.Length; i++)
         {
-            Triangulate(cells[i]);
+            GiveDirections(cells[i]);
         }
 
         hexMesh.vertices = vertices.ToArray();
@@ -45,16 +45,21 @@ public class HexMesh : MonoBehaviour
         hexMesh.RecalculateNormals();
         meshCollider.sharedMesh = hexMesh;
     }
+
+    void GiveDirections (HexCell cell) {
+		for (HexDirection d = HexDirection.NE; d <= HexDirection.NW; d++) {
+			TriangulateCell(d, cell);
+		}
+	}
     
-    
-    void Triangulate (HexCell cell) {
+    void TriangulateCell (HexDirection direction, HexCell cell) {
         Vector3 center = cell.transform.localPosition;
         for (int i = 0; i < 6; i++)
         {
             AddTriangle(
                 center,
-                center + HexMetrics.corners[i],
-                center + HexMetrics.corners[i+1]
+                center + HexMetrics.corners[(int)(direction)],
+                center + HexMetrics.corners[(int)(direction)+1]
             );
             AddTriangleColor(cell.color);
         }
@@ -72,7 +77,7 @@ public class HexMesh : MonoBehaviour
 
 
     // Private/Helper Functions //
-    private void AddTriangleColor (Color color) {
+    void AddTriangleColor (Color color) {
         colors.Add(color);
         colors.Add(color);
         colors.Add(color);

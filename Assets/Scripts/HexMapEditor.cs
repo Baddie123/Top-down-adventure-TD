@@ -7,7 +7,9 @@ public class HexMapEditor : MonoBehaviour
     // Variables //
 	public Color[] colors;
 	public HexGrid hexGrid;
+
 	private Color activeColor;
+    private int activeElevation;
 
 
     // Unity Functions //
@@ -23,17 +25,30 @@ public class HexMapEditor : MonoBehaviour
         }
     }
 
+
+    // Public Functions //
+    public void SelectColor (int index) {
+		activeColor = colors[index];
+	}
+
+    public void SetElevation (float elevation) {
+		activeElevation = (int)elevation;
+	}
+
+
+    // Private Functions //
     void HandleInput()
     {
         Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(inputRay, out hit)) {
-            hexGrid.TouchCell(hit.point, activeColor);
+            EditCell(hexGrid.GetCell(hit.point));
         }
     }
 
-    // Public Functions //
-    public void SelectColor (int index) {
-		activeColor = colors[index];
+    void EditCell (HexCell cell) {
+		cell.color = activeColor;
+        cell.elevation = activeElevation;
+		hexGrid.Refresh();
 	}
 }

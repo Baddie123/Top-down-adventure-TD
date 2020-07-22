@@ -5,8 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class HexCell : MonoBehaviour
 {
+    // Variables //
     public HexCoordinates coordinates;
     public Color color;
+    public int elevation;
+    public const float elevationStep = 5f;
+
     Mesh hexCell;
     List<Vector3> vertices;
     List<int> triangles;

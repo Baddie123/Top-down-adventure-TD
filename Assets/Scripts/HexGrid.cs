@@ -38,16 +38,15 @@ public class HexGrid : MonoBehaviour
 
 
     // Public Functions //
-    public void TouchCell (Vector3 position, Color color) {
-        position = transform.InverseTransformPoint(position);
-        HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-        Debug.Log("touched at " + coordinates.ToString());
-        
-        //Find index of the cell in the array, change its color, and re-triangulate it
-        int index = coordinates.X + coordinates.Z * width + coordinates.Z / 2;
-		HexCell cell = cells[index];
-		cell.color = color;
+    public void Refresh () {
 		hexMesh.Triangulate(cells);
+	}
+
+    public HexCell GetCell (Vector3 position) {
+		position = transform.InverseTransformPoint(position);
+		HexCoordinates coordinates = HexCoordinates.FromPosition(position);
+		int index = coordinates.X + coordinates.Z * width + coordinates.Z / 2;
+        return cells[index];
     }
 
     // Private Functions //

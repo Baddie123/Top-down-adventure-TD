@@ -8,15 +8,14 @@ public class HexCell : MonoBehaviour
     // Variables //
     public HexCoordinates coordinates;
     public Color color;
-    public int elevation;
     public const float elevationStep = 5f;
-
-    Mesh hexCell;
+    int elevation;
     List<Vector3> vertices;
     List<int> triangles;
     List<Color> colors;
+    [SerializeField] HexCell[] neighbors = null;
+    Mesh hexCell;
     MeshCollider meshCollider;
-    [SerializeField] HexCell[] neighbors;
 
     
     // Unity Functions //
@@ -31,6 +30,12 @@ public class HexCell : MonoBehaviour
 
 
     // Public Functions //
+    public HexEdgeType GetEdgeType (HexDirection direction) {
+		return HexMetrics.GetEdgeType(
+			elevation, neighbors[(int)direction].elevation
+		);
+	}
+
     public HexCell GetNeighbor (HexDirection direction) {
 		return neighbors[(int)direction];
 	}
@@ -38,6 +43,18 @@ public class HexCell : MonoBehaviour
     public void SetNeighbor (HexDirection direction, HexCell cell) {
 		neighbors[(int)direction] = cell;
         cell.neighbors[(int)direction.Opposite()] = this;
+	}
+
+    public int Elevation {
+		get {
+			return elevation;
+		}
+		set {
+			elevation = value;
+			Vector3 position = transform.localPosition;
+			position.y = value * HexMetrics.elevationStep;
+			transform.localPosition = position;
+		}
 	}
 
 

@@ -7,13 +7,11 @@ public class HexGrid : MonoBehaviour
     // Variables //
     public int width;
     public int height;
-
     public HexCell cellPrefab;
     public HexCell[] cells;
-    private HexMesh hexMesh;
-
     public Color defaultColor = Color.white;
     public Color touchedColor = Color.magenta;
+    private HexMesh hexMesh;
 
 
     // Unity Functions

@@ -36,6 +36,12 @@ public class HexCell : MonoBehaviour
 		);
 	}
 
+    public HexEdgeType GetEdgeType (HexCell otherCell) {
+		return HexMetrics.GetEdgeType(
+			elevation, otherCell.elevation
+		);
+	}
+
     public HexCell GetNeighbor (HexDirection direction) {
 		return neighbors[(int)direction];
 	}

@@ -4,12 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/Assets/Scripts/HexCoordinates.cs" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="773ed6ed-a9ab-4eb6-854f-942e8a45a886" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-adventure-TD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-adventure-TD/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-down-adventure-TD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-down-adventure-TD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/xbot@Standing 2H Magic Attack 01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/xbot@Standing 2H Magic Attack 01.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VFX.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VFX.unity" afterDir="false" />
-    </list>
+    <list default="true" id="773ed6ed-a9ab-4eb6-854f-942e8a45a886" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +15,7 @@
     <session id="1068163801">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.34" value="1" />
@@ -324,12 +319,12 @@
       <workItem from="1593808497659" duration="1390000" />
       <workItem from="1593904580570" duration="5251000" />
       <workItem from="1594491794935" duration="2009000" />
-      <workItem from="1594763642527" duration="4760000" />
+      <workItem from="1594763642527" duration="5360000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17808000" />
+    <option name="totallyTimeSpent" value="18408000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -342,7 +337,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="3" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

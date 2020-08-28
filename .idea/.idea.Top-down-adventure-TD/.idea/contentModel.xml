@@ -10,7 +10,13 @@
         <e p="Editor" t="Include">
           <e p="HexCoordinatesDrawer.cs" t="Include" />
         </e>
+        <e p="HomingProjectile.cs" t="Include" />
         <e p="Scripts" t="Include">
+          <e p="Basic_Projectile.cs" t="Include" />
+          <e p="Combat" t="Include">
+            <e p="PlayerShoot.cs" t="Include" />
+          </e>
+          <e p="Grenade.cs" t="Include" />
           <e p="HexCell.cs" t="Include" />
           <e p="HexCoordinates.cs" t="Include" />
           <e p="HexDirection.cs" t="Include" />
@@ -21,7 +27,9 @@
           <e p="Movement" t="Include">
             <e p="PlayerMovement.cs" t="Include" />
           </e>
+          <e p="OrbitCamera.cs" t="Include" />
         </e>
+        <e p="Tower.cs" t="Include" />
       </e>
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />

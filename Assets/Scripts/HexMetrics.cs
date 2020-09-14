@@ -29,6 +29,9 @@ public static class HexMetrics
 		new Vector3(0f, 0f, outerRadius)
 	};
 
+	// Values for map generation chunks
+	public const int chunkSizeX = 5, chunkSizeZ = 5;
+
 
 	// Public Functions //
 	// Interpolate slope steps?
